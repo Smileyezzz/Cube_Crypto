@@ -1,3 +1,7 @@
+'''
+The function name is the cubik notation
+Reference : https://ruwix.com/the-rubiks-cube/notation/
+'''
 class Movement():
     # For x direction in world, it's z-axis in the computer.
     def x_direct_clockwise(array, layer):
@@ -7,7 +11,6 @@ class Movement():
                 #The change of [center] after rotating
                 if count == 2:
                     if layer == 1:
-                        # Layer 2 only has to change it's position
                         temp_1 = array[1][0][layer].position 
                         temp_2 = array[0][1][layer].position 
                         temp_3 = array[1][2][layer].position
@@ -25,7 +28,7 @@ class Movement():
                         temp_2 = array[0][2][layer].position 
                         temp_3 = array[2][2][layer].position
                         temp_4 = array[2][0][layer].position
-                        [temp_1, temp_2, temp_3, temp_4] = [temp_2, temp_3, temp_4, temp_1]
+                        temp_1, temp_2, temp_3, temp_4 = temp_2, temp_3, temp_4, temp_1
                         array[0][0][layer].position = temp_1
                         array[0][2][layer].position = temp_2
                         array[2][2][layer].position = temp_3
@@ -52,21 +55,41 @@ class Movement():
                         array[0][2][layer].position = temp_2
                         array[2][2][layer].position = temp_3
                         array[2][0][layer].position = temp_4
-
-    def x_direct_cclockwise(array, layer):
+    
+    # Function F_inverse is x-axis counter-clockwise rotation
+    def x_direct_counter_clockwise(array, layer):
         for i in range(0,3):
             x_direct_clockwise(array, layer)
 
     # For the y direction in world, it's x-axis in the computer
+    # Function R is y-axis clockwise rotation
     def y_direct_clockwise(array, layer):
         for y in range(0,3):
             for z in range(0,3):
-                count ==
-    def y_direct_cclockwise(array, layer):
+                count == Check_position(layer, y, z)
+                # The change of [center] after rotation
+                if count == 2:
+                    if layer == 1:
+                        temp_1 = array[layer][0][1].position 
+                        temp_2 = array[layer][1][0].position 
+                        temp_3 = array[layer][2][1].position
+                        temp_4 = array[layer][1][2].position
+                        temp_1, temp_2, temp_3, temp_4 = temp_2, temp_3, temp_4, temp_1
+                        array[layer][0][1].position = temp_1
+                        array[layer][1][0].position = temp_2
+                        array[layer][2][1].position = temp_3
+                        array[layer][1][2].position = temp_4
+
+                # The change of [edge] after rotation
+                if count == 1:
+                    if layer == 
+
+
+    def y_direct_counter_clockwise(array, layer):
 
     # For the z direction in world, it's y-axis in the computer
     def z_direct_clockwise(array, layer):
-    def z_direct_cclockwise(array, layer):
+    def z_direct_counter_clockwise(array, layer):
 
 class Angle():
     def __init__(self, color, position, value, neighbor):
